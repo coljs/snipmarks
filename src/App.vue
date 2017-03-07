@@ -44,4 +44,8 @@ a {
 ul {
   list-style: none;
 }
+
+.container {
+  margin: 30px;
+}
 </style>

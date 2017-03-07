@@ -23,9 +23,6 @@
 </script>
 
 <style>
-#home {
-  margin: 30px;
-}
 .snipmarks-list {
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0,0,0,.1);
