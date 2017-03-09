@@ -1,0 +1,1 @@
+export const LOAD_MARKERS = 'LOAD_MARKERS'

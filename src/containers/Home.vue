@@ -2,14 +2,8 @@
   <div id="home">
     <div class="snipmarks-list">
       <ul>
-        <li>
-          First snipmarker
-        </li>
-        <li>
-          Second snipmarker
-        </li>
-        <li>
-          Third snipmarker
+        <li v-for="marker in markers">
+          {{ marker.title }}
         </li>
       </ul>
     </div>
@@ -17,8 +11,21 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   export default {
-    name: 'home'
+    name: 'home',
+    computed: mapGetters({
+      markers: 'getMarkers'
+    }),
+    methods: {
+      ...mapActions([
+        'loadMarks'
+      ])
+    },
+    mounted () {
+      this.$store.dispatch('loadMarks')
+    }
   }
 </script>
 
