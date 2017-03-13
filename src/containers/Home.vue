@@ -2,8 +2,8 @@
   <div id="home">
     <div class="snipmarks-list">
       <ul>
-        <li v-for="marker in markers">
-          {{ marker.title }}
+          <li v-for="marker in markers">
+              <router-link :to="{ name: 'Specific Snipmark', params: { id: marker.id }}"> {{ marker.name }}</router-link>
         </li>
       </ul>
     </div>

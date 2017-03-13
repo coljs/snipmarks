@@ -1,18 +1,11 @@
 <template>
   <div id="home">
-    <div class="snipmarks-list">
-      ==> {{ $route.params.id }}
-        -> {{ marker }}
-        x-> {{ $router.params.id }}
-      <!--<ul>
-          <li v-for="marker in markers">
-                 {{ marker.name }} - {{ marker.link }}
-        </li>
-      </ul>-->
+      <div class="snipmarks-list">
+          <br >
+        -> {{ $route.params.id }}
     </div>
   </div>
 </template>
-
 <script>
   import { mapGetters, mapActions } from 'vuex'
 
