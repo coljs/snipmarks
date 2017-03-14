@@ -1,19 +1,13 @@
 <template>
   <div id="home">
-      <div class="snipmarks-list">
-          <br >
-          -> Id: {{ marker.id }}
-          <br >
-          -> Name: {{ marker.name }}
-          <br >
-          -> Link: {{ marker.link }}
-          <br >
-          -> Description: {{ marker.description }}
-          <br >
-          -> Date: {{ marker.date }}
-          <br >
-          -> Type: {{ marker.type }}
-    </div>
+    <div class="snipmarks-item">
+      <ul>
+        <li><strong>Marker name</strong>: {{marker.name}}</li>
+        <li><strong>Marker description</strong>: {{marker.description}}</li>
+        <li><strong>Marker date</strong>: {{marker.date}}
+        <li><strong>Marker link</strong>: {{marker.link}}</li>
+      </ul>
+  </div>
   </div>
 </template>
 <script>
@@ -21,9 +15,9 @@
 
   export default {
     name: 'home',
-    computed: mapGetters({
-      marker: 'getMarker'
-    }),
+    computed: {
+      ...mapGetters({marker: 'getMarker'})
+    },
     methods: {
       ...mapActions([
         'loadMark'
@@ -36,16 +30,14 @@
 </script>
 
 <style>
-.snipmarks-list {
-  background-color: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,.1);
-}
-.snipmarks-list ul li {
-  padding: 20px;
-}
-
-.snipmarks-list ul li:hover {
-  background-color: #ccc;
-  color: #fff;
-}
+  .snipmarks-item {
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+  }
+  .snipmarks-item ul {
+    padding: 20px;
+  }
+  .snipmarks-item ul li {
+    padding: 10px 0;
+  }
 </style>
