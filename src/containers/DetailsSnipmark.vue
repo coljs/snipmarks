@@ -29,7 +29,7 @@
         'loadMark'
       ])
     },
-    mounted () {
+    created () {
       this.$store.dispatch('loadMark', this.$route.params.id)
     }
   }
