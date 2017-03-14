@@ -10,6 +10,6 @@ export const loadMarks = ({ commit }) => {
   })
 }
 
-export const loadMark = ({ commit }, markers) => {
-  commit(types.LOAD_MARKERS, {id: 2})// TODO
+export const loadMark = ({ commit }, markerId) => {
+  commit(types.LOAD_MARKER, markerId)
 }

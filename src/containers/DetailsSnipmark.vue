@@ -2,7 +2,17 @@
   <div id="home">
       <div class="snipmarks-list">
           <br >
-        -> {{ $route.params.id }}
+          -> Id: {{ marker.id }}
+          <br >
+          -> Name: {{ marker.name }}
+          <br >
+          -> Link: {{ marker.link }}
+          <br >
+          -> Description: {{ marker.description }}
+          <br >
+          -> Date: {{ marker.date }}
+          <br >
+          -> Type: {{ marker.type }}
     </div>
   </div>
 </template>
@@ -20,7 +30,7 @@
       ])
     },
     mounted () {
-      this.$store.dispatch('loadMark')
+      this.$store.dispatch('loadMark', this.$route.params.id)
     }
   }
 </script>

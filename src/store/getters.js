@@ -3,5 +3,5 @@ export const getMarkers = state => {
 }
 
 export const getMarker = state => {
-  return state.marker
+  return state.markers.find(marker => marker.id === state.marker)
 }
