@@ -1,30 +1,49 @@
 <template>
   <div id="dashboard">
     <form id="create-snipmark--form">
-      <input type="text" name="name" placeholder="Snipmark name" v-model="name" />
-      <input type="text" name="description" placeholder="Snipmark description" v-model="description" />
+      <input type="text" name="name" placeholder="Snipmark name" v-model="newSnipmark.name" />
+      <input type="text" name="description" placeholder="Snipmark description" v-model="newSnipmark.description" />
       <div class="create-snipmark--radio">
         <label for="radio-choice-1">Snippet</label>
-        <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" v-model="type" />
+        <input type="radio" name="radio-choice" id="radio-choice-1" value="snippet" v-model="newSnipmark.type" />
         <label for="radio-choice-2">Bookmark</label>
-        <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2" v-model="type" />
+        <input type="radio" name="radio-choice" id="radio-choice-2" value="link" v-model="newSnipmark.type" />
       </div>
       <div class="create-snipmark--link">
-        <input type="text" name="bookmark" placeholder="Bookmark link" v-model="link" />
+        <input type="text" name="bookmark" placeholder="Bookmark link" v-model="newSnipmark.link" />
       </div>
       <div class="create-snipmark--snippet">
-        <textarea cols="52" rows="8" name="textarea" id="textarea" placeholder="Snippet" v-model="snippet"></textarea>
+        <textarea cols="52" rows="8" name="textarea" id="textarea" placeholder="Snippet" v-model="newSnipmark.snippet">
+        </textarea>
       </div>
       <div class="create-snipmark--submit">
-        <input type="submit" value="Submit" />
+        <input type="button" value="Submit" @click="createSnipmark(newSnipmark)" />
       </div>
     </form>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
-    name: 'CreateSnipmarks'
+    name: 'CreateSnipmarks',
+    data () {
+      return {
+        newSnipmark: {
+          name: '',
+          description: '',
+          type: '',
+          link: '',
+          snippet: ''
+        }
+      }
+    },
+    methods: {
+      ...mapActions([
+        'createSnipmark'
+      ])
+    }
   }
 </script>
 
