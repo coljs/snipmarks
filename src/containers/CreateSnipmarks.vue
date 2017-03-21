@@ -19,15 +19,15 @@
         />
       </div>
       <div class="create-snipmark--snippet">
-        <textarea
-          cols="52"
-          rows="8"
-          name="snippet"
-          placeholder="Snippet"
-          v-model="newSnipmark.snippet"
-          :disabled="newSnipmark.type === 'link'"
+        <editor
+          v-model="content"
+          @init="editorInit();"
+          lang="html"
+          theme="chrome"
+          width="100%"
+          height="100"
         >
-        </textarea>
+        </editor>
       </div>
       <div class="create-snipmark--submit">
         <input type="button" value="Submit" @click="createSnipmark(newSnipmark)" />
@@ -55,7 +55,16 @@
     methods: {
       ...mapActions([
         'createSnipmark'
-      ])
+      ]),
+      editorInit: function () {
+        require('brace/mode/html')
+        require('brace/mode/javascript')
+        require('brace/mode/less')
+        require('brace/theme/chrome')
+      }
+    },
+    components: {
+      editor: require('vue2-ace-editor')
     }
   }
 </script>
@@ -109,5 +118,8 @@
   input[name="bookmark"]:disabled,
   textarea[name="snippet"]:disabled {
     background-color: #ddd;
+  }
+  .ace_editor {
+    margin-top: 1em;
   }
 </style>
