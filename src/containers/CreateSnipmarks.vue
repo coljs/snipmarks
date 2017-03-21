@@ -9,11 +9,24 @@
         <label for="radio-choice-2">Bookmark</label>
         <input type="radio" name="radio-choice" id="radio-choice-2" value="link" v-model="newSnipmark.type" />
       </div>
-      <div class="create-snipmark--link" v-if="newSnipmark.type === 'link'">
-        <input type="text" name="bookmark" placeholder="Bookmark link" v-model="newSnipmark.link" />
+      <div class="create-snipmark--link">
+        <input
+          type="text"
+          name="bookmark"
+          placeholder="Bookmark link"
+          v-model="newSnipmark.link"
+          :disabled="newSnipmark.type === 'snippet'"
+        />
       </div>
-      <div class="create-snipmark--snippet" v-if="newSnipmark.type === 'snippet'">
-        <textarea cols="52" rows="8" name="textarea" id="textarea" placeholder="Snippet" v-model="newSnipmark.snippet">
+      <div class="create-snipmark--snippet">
+        <textarea
+          cols="52"
+          rows="8"
+          name="snippet"
+          placeholder="Snippet"
+          v-model="newSnipmark.snippet"
+          :disabled="newSnipmark.type === 'link'"
+        >
         </textarea>
       </div>
       <div class="create-snipmark--submit">
@@ -73,25 +86,28 @@
   }
   .create-snipmark--submit input {
     background: #1abc9c;
-    color: #fff;
-    border: 0;
+    border: .1em solid #ddd;
     border-bottom: 4px solid #169d82;
+    border-radius: 4px;
+    color: #fff;
     font-size: 1em;
     font-weight: bold;
-    margin-top: 1em;
-    width: 50%;
     height: 3em;
-    text-indent: .5em;
-    border: .1em solid #ddd;
-    border-radius: 4px;
+    margin-top: 1em;
     outline-color: #1abc9c;
+    text-indent: .5em;
+    width: 50%;
   }
   .create-snipmark--submit input:focus, .create-snipmark--submit input:hover {
     background: #16a085;
     border-bottom-color: #12816b;
   }
   .create-snipmark--submit input:active {
-    background: #1bc2a2;
+    background-color: #1bc2a2;
     border-bottom-color: #17a388;
+  }
+  input[name="bookmark"]:disabled,
+  textarea[name="snippet"]:disabled {
+    background-color: #ddd;
   }
 </style>
