@@ -9,10 +9,10 @@
         <label for="radio-choice-2">Bookmark</label>
         <input type="radio" name="radio-choice" id="radio-choice-2" value="link" v-model="newSnipmark.type" />
       </div>
-      <div class="create-snipmark--link">
+      <div class="create-snipmark--link" v-if="newSnipmark.type === 'link'">
         <input type="text" name="bookmark" placeholder="Bookmark link" v-model="newSnipmark.link" />
       </div>
-      <div class="create-snipmark--snippet">
+      <div class="create-snipmark--snippet" v-if="newSnipmark.type === 'snippet'">
         <textarea cols="52" rows="8" name="textarea" id="textarea" placeholder="Snippet" v-model="newSnipmark.snippet">
         </textarea>
       </div>
