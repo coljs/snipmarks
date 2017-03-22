@@ -18,11 +18,23 @@
           :disabled="newSnipmark.type === 'snippet'"
         />
       </div>
+
+      <select name="language" v-model="newSnipmark.language" @change="changeLanguage()">
+        <option value="html">HTML</option>
+        <option value="python">Python</option>
+        <option value="javascript">Javascript</option>
+        <option value="ruby">Ruby</option>
+        <option value="c_cpp">C</option>
+        <option value="less">LESS</option>
+        <option value="css">CSS</option>
+      </select>
+
       <div class="create-snipmark--snippet">
         <editor
-          v-model="content"
+          id="editorA"
+          v-model="newSnipmark.snippet"
           @init="editorInit();"
-          lang="html"
+          :lang="newSnipmark.language"
           theme="chrome"
           width="100%"
           height="100"
@@ -48,7 +60,8 @@
           description: '',
           type: '',
           link: '',
-          snippet: ''
+          snippet: '',
+          language: 'html'
         }
       }
     },
@@ -60,7 +73,16 @@
         require('brace/mode/html')
         require('brace/mode/javascript')
         require('brace/mode/less')
+        require('brace/mode/python')
+        require('brace/mode/c_cpp')
+        require('brace/mode/ruby')
+        require('brace/mode/css')
         require('brace/theme/chrome')
+      },
+      changeLanguage: function () {
+        // Get the instance of the editor to modify
+        const editor = window.ace.edit('editorA')
+        editor.getSession().setMode(`ace/mode/${this.newSnipmark.language}`)
       }
     },
     components: {
@@ -80,7 +102,9 @@
   input[name="name"],
   input[name="description"],
   input[name="bookmark"],
+  select,
   textarea {
+    background: #fff;
     border: .1em solid #ddd;
     border-radius: 4px;
     font-size: 14px;
