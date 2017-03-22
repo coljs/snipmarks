@@ -35,9 +35,9 @@
           v-model="newSnipmark.snippet"
           @init="editorInit();"
           :lang="newSnipmark.language"
-          theme="chrome"
+          theme="kuroir"
           width="100%"
-          height="100"
+          height="300"
         >
         </editor>
       </div>
@@ -50,6 +50,7 @@
 
 <script>
   import { mapActions } from 'vuex'
+  import Editor from 'vue2-ace-editor'
 
   export default {
     name: 'CreateSnipmarks',
@@ -77,7 +78,7 @@
         require('brace/mode/c_cpp')
         require('brace/mode/ruby')
         require('brace/mode/css')
-        require('brace/theme/chrome')
+        require('brace/theme/kuroir')
       },
       changeLanguage: function () {
         // Get the instance of the editor to modify
@@ -86,7 +87,7 @@
       }
     },
     components: {
-      editor: require('vue2-ace-editor')
+      editor: Editor
     }
   }
 </script>
