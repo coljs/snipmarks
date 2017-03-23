@@ -1,13 +1,11 @@
 import * as types from './mutation-types'
+import db from './firebase'
 
 export default {
-  [types.LOAD_MARKERS] (state, markerList) {
-    state.markers = markerList
-  },
   [types.LOAD_MARKER] (state, markerId) {
     state.marker = markerId
   },
   [types.CREATE_MARKER] (state, newMarker) {
-    state.markers = [ ...state.markers, newMarker ]
+    db.ref('markers').push(newMarker)
   }
 }

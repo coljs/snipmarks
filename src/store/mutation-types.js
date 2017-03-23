@@ -1,3 +1,2 @@
-export const LOAD_MARKERS = 'LOAD_MARKERS'
 export const LOAD_MARKER = 'LOAD_MARKER'
 export const CREATE_MARKER = 'CREATE_MARKER'

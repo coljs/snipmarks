@@ -24,7 +24,7 @@
       ])
     },
     created () {
-      this.$store.dispatch('loadMark', this.$route.params.id)
+      this.$store.dispatch('loadMark', this.$route.params.key)
     }
   }
 </script>

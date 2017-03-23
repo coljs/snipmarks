@@ -9,7 +9,7 @@ Vue.use(Router)
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/create-snipmarks', name: 'Create Snipmarks', component: CreateSnipmarks },
-  { path: '/:id', name: 'Specific Snipmark', component: Market }
+  { path: '/:key', name: 'Specific Snipmark', component: Market }
 ]
 
 export default new Router({

@@ -3,7 +3,7 @@
     <div class="snipmarks-list">
       <ul>
         <li v-for="marker in markers">
-          <router-link :to="{ name: 'Specific Snipmark', params: { id: marker.id } }">{{ marker.name }}</router-link>
+          <router-link :to="{ name: 'Specific Snipmark', params: { key: marker['.key'] } }">{{ marker.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -11,20 +11,12 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'home',
-    computed: mapGetters({
-      markers: 'getMarkers'
-    }),
-    methods: {
-      ...mapActions([
-        'loadMarks'
-      ])
-    },
-    mounted () {
-      this.$store.dispatch('loadMarks')
+    computed: {
+      ...mapGetters({markers: 'getMarkers'})
     }
   }
 </script>

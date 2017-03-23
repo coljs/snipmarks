@@ -3,5 +3,9 @@ export const getMarkers = state => {
 }
 
 export const getMarker = state => {
-  return state.markers.find(marker => marker.id === state.marker)
+  return state.markers.find(marker => marker['.key'] === state.marker)
+}
+
+export const lastIndex = state => {
+  return state.markers[state.markers.length - 1]
 }

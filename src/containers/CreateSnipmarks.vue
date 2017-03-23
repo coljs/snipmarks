@@ -49,8 +49,8 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
   import Editor from 'vue2-ace-editor'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'CreateSnipmarks',
@@ -59,17 +59,28 @@
         newSnipmark: {
           name: '',
           description: '',
-          type: '',
+          type: 'snippet',
           link: '',
           snippet: '',
-          language: 'html'
+          language: 'html',
+          date: new Date().toUTCString()
+        }
+      }
+    },
+    computed: {
+      ...mapGetters({lastMarker: 'lastIndex'})
+    },
+    watch: {
+      lastMarker: function (val) {
+        if (val.name === this.newSnipmark.name) {
+          this.$router.push({ name: 'Specific Snipmark', params: { key: val['.key'] } })
         }
       }
     },
     methods: {
-      ...mapActions([
-        'createSnipmark'
-      ]),
+      createSnipmark: function () {
+        this.$store.dispatch('createSnipmark', this.newSnipmark)
+      },
       editorInit: function () {
         require('brace/mode/html')
         require('brace/mode/javascript')
